@@ -1,0 +1,14 @@
+*.pyc
+build/
+dist/
+venv/
+hypoxic_service.egg-info/
+hypoxic_service/
+
+# IntelliJ / PyCharm
+.idea/
+
+.virtualenv/
+.anchorchain.links
+
+local_settings.py
