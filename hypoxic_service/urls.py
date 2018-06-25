@@ -14,5 +14,7 @@ router.register('lap', views.LapViewSet)
 router.register('lap-track-point', views.LapTrackPointViewSet)
 
 urlpatterns = [
+    re_path(r'^api/', include('hypoxic_admin.urls')),
+    re_path(r'^api/', include('hypoxic_otp.urls')),
     re_path(r'^api/hypoxic/v1/', include(router.urls)),
 ]

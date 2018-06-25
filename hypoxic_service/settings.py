@@ -17,10 +17,35 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hypoxic_admin',
+    'hypoxic_otp',
     'hypoxic_service',
     'django_filters',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_static',
+    'djoser',
     'rest_framework',
 )
+
+AUTH_USER_MODEL = 'hypoxic_admin.HypoxicUser'
+
+DJOSER = {
+    'ACTIVATION_URL': 'api/user/activate/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'api/password/reset/confirm/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+    'JWT_GET_USER_SECRET_KEY': 'hypoxic_admin.utils.jwt_get_secret_key',
+    'JWT_PAYLOAD_HANDLER': 'hypoxic_otp.utils.jwt_otp_payload_handler',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+}
+# 2FA issuer name
+OTP_TOTP_ISSUER = 'Hypoxic'
 
 # Database configuration
 DATABASES = {
@@ -125,6 +150,7 @@ USE_TZ = True
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',

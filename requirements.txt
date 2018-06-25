@@ -2,6 +2,9 @@ Django==2.0.6                         # https://docs.djangoproject.com/en/2.0/
 djangorestframework==3.8.2            # http://www.django-rest-framework.org/
 djangorestframework-filters==0.10.2   # https://github.com/philipn/django-rest-framework-filters
 djangorestframework-jsonapi==2.4.0    # http://django-rest-framework-json-api.readthedocs.io/
+djangorestframework-jwt==1.11.0       # https://pypi.org/project/djangorestframework-jwt/
+django_otp==0.4.3                     # https://django-otp-official.readthedocs.io/en/latest/
+djoser==1.1.5                         # http://djoser.readthedocs.io/en/latest/getting_started.html
 
 boto3==1.7.40                         # https://boto3.readthedocs.io/en/latest/index.html
 ipython==6.4.0                        # https://ipython.readthedocs.io/en/stable/
